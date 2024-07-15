@@ -1,0 +1,261 @@
+import React, { useContext, useState } from "react";
+import userContext from "../../context/userContext";
+import service from "../../appwrite/config";
+import Home from "./Home";
+import Footer from "../Footer/Footer";
+import { Modal, ConfigProvider } from "antd";
+function Hero() {
+  const [sec, setSec] = useState(60);
+  const [time, setTime] = useState(0);
+  const [min, setMin] = useState(0);
+  const [timerStart, setTimerStart] = useState(false);
+  const [timerCompleted, setTimerCompleted] = useState(false);
+  const [custom, setCustom] = useState("");
+  const [cutomTimerInput, setCustomTimerInput] = useState(false);
+  var intId = 0;
+  const [intervalId, setIntervalId] = useState(0);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+  const { loginStatus, date } = useContext(userContext);
+  const handleStart = (e) => {
+    if (time != 0) {
+      setTimerStart(true);
+      intId = setInterval(updateTime, 1000);
+      setIntervalId(intId);
+      console.log(intId);
+      setCustomTimerInput(false);
+      if (loginStatus) {
+        updateTimeUsage(time);
+      }
+    } else {
+      alert("Please Select the duration of timer.");
+    }
+  };
+  let seconds = 60;
+  let totalMinutes = time - 1;
+
+  function updateTime() {
+    console.log(totalMinutes);
+    setMin(totalMinutes);
+    seconds--;
+    setSec(seconds);
+    if (seconds == 0) {
+      if (seconds == 0 && totalMinutes == 0) {
+        setTimerCompleted(true);
+        handleStop();
+      }
+      seconds = 60;
+      totalMinutes = totalMinutes - 1;
+    }
+  }
+
+  function handleStop() {
+    clearInterval(intervalId);
+    seconds = 60;
+    setTimerStart(false);
+    setTime(0);
+    setMin(0);
+    setSec(60);
+    setCustom(0);
+    setCustomTimerInput(false);
+    setIsModalOpen(false);
+  }
+
+  const hideMessage = () => {
+    setTimerCompleted(false);
+    setTimerStart(false);
+  };
+
+  const timer = () => {
+    if (timerCompleted) {
+      clearInterval(intervalId);
+
+      return (
+        <div className="outline rounded-lg flex justify-center align-middle z-10">
+          <div className=" bg-zinc-950 ">
+            <h1 className=" bg-zinc-900 text-white px-20 py-4">
+              Hurray, you have completed 🎉
+            </h1>
+            <h1 className=" text-white py-6 px-5 mb-2">Take a break.</h1>
+            <button
+              onClick={(e) => hideMessage()}
+              className="bg-zinc-700 rounded-full px-5 py-2 m-2 text-white "
+            >
+              Okay
+            </button>
+          </div>
+        </div>
+      );
+    } else if (timerStart) {
+      return (
+        <h1 className="text-9xl ">
+          {min < 10 ? "0" + min : min} : {sec < 10 ? "0" + sec : sec}
+        </h1>
+      );
+    } else {
+      return <h1 className="  text-9xl ">00:00</h1>;
+    }
+  };
+
+  async function getData() {
+    const res = await service.getDataOfDate({ date });
+    return res;
+  }
+
+  const updateTimeUsage = async (time) => {
+    const data = await getData();
+    if (data != null) {
+      const currentData = data.documents[0];
+      const newTime = data.documents[0].TotalTime + time;
+      await service.updateDocument(currentData.$id, newTime);
+      console.log("updated sucessfully");
+    } else {
+      console.log("data is not updated");
+    }
+  };
+
+  return (
+    <>
+      <Home />
+      <div
+        className=" bg-neutral-950   text-white font-poppins pb-24"
+        id="timer"
+      >
+        <h1 className=" text-center text-4xl pt-6 text-neutral-100 ">
+          Let&apos;s Focus
+        </h1>
+        <div className="   flex justify-center align-middle gap-4 pt-20 pb-12">
+          <button
+            onClick={(e) => setTime(Number(e.target.value))}
+            value="2"
+            className=" border rounded-full px-4 py-2 hover:bg-zinc-900  "
+          >
+            2 min
+          </button>
+          <button
+            onClick={(e) => setTime(Number(e.target.value))}
+            value="10"
+            className=" border rounded-full px-4 py-2 hover:bg-zinc-900  "
+          >
+            10 min
+          </button>
+          <button
+            onClick={(e) => setTime(Number(e.target.value))}
+            value="15"
+            className=" border rounded-full px-4 py-2 hover:bg-zinc-900  "
+          >
+            15 min
+          </button>
+          <button
+            onClick={(e) => setTime(Number(e.target.value))}
+            value="25"
+            className=" border rounded-full px-4 py-2 hover:bg-zinc-900  "
+          >
+            25 min
+          </button>
+          <button
+            onClick={(e) => setTime(Number(e.target.value))}
+            value="45"
+            className=" border rounded-full px-4 py-2 hover:bg-zinc-900  "
+          >
+            45 min
+          </button>
+          <button
+            onClick={(e) => setTime(Number(e.target.value))}
+            value="90"
+            className=" border rounded-full px-4 py-2 hover:bg-zinc-900  "
+          >
+            90 min
+          </button>
+          <div>
+            <button
+              onClick={(e) => setCustomTimerInput(!cutomTimerInput)}
+              className=" border rounded-full px-4 py-2 hover:bg-zinc-900  "
+            >
+              Custom
+            </button>
+            {cutomTimerInput ? (
+              <input
+                type="text"
+                placeholder="Enter minutes"
+                className=" w-36 pl-2 py-2 outline-none bg-transparent text-white border rounded-3xl ml-1"
+                value={custom}
+                onChange={(e) => {
+                  setCustom(Number(e.target.value));
+                  setTime(Number(e.target.value));
+                }}
+              />
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+        <div className=" flex justify-center align-middle pt-20 pb-12">
+          {timer()}
+        </div>
+        <div className=" flex justify-center align-middle pb-20 pt-28">
+          {isModalOpen ? (
+            <>
+              <ConfigProvider
+                theme={{
+                  components: {
+                    Modal: {
+                      contentBg: "#FFFFFF40",
+                    },
+                  },
+                }}
+              >
+                ...
+                <Modal
+                  title=""
+                  open={isModalOpen}
+                  onOk={handleStop}
+                  onCancel={handleCancel}
+                  contentBg="#212121"
+                  footerBg="#000"
+                  okText={"Yes"}
+                  cancelText={"No"}
+                >
+                  <h1 className=" text-white text-lg">
+                    Do you want to give up ?
+                  </h1>
+                </Modal>
+              </ConfigProvider>
+            </>
+          ) : (
+            ""
+          )}
+          {timerStart ? (
+            <button
+              onClick={(e) => {
+                showModal();
+              }}
+              className="text-black bg-white font-bold uppercase text-lg border rounded-full px-10 py-3 hover:bg-transparent hover:text-white ease-in-out  "
+            >
+              Stop
+            </button>
+          ) : (
+            <button
+              onClick={(e) => handleStart(e)}
+              className="text-black bg-white font-bold uppercase text-lg border rounded-full px-10 py-3 hover:bg-transparent hover:text-white ease-in-out  "
+            >
+              Start
+            </button>
+          )}
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
+}
+
+export default Hero;
