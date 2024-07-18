@@ -28,7 +28,7 @@ function Login() {
       }
       navigate("/");
     } catch (error) {
-      console.log(error);
+      console.log(error + ":::error in login.jsx");
     }
   };
   return (
