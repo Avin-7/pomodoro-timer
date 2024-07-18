@@ -14,20 +14,9 @@ function Navbar() {
   return (
     <>
       <div className=" bg-transparent  backdrop-blur-md text-white flex gap-44 pb-10 pt-6 font-poppins fixed top-0 w-full ">
-        <div className="flex absolute left-14 ">
-          <Link
-            to="/"
-            className=" text-bold text-white font-bold text-xl"
-            href=""
-          >
-            <span>
-              <img
-                src="src\assets\timer-sharp.svg"
-                alt=""
-                width="36"
-                height="36"
-              />
-            </span>
+        <div className="flex absolute left-24">
+          <Link to="/" className=" text-emerald-50 text-xl underline decoration-teal-200 underline-offset-4 ">
+            Pomodoro
           </Link>
         </div>
         <div className="flex gap-14 absolute right-14 ">
