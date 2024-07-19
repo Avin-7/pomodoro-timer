@@ -28,8 +28,8 @@ function Hero() {
   const { loginStatus, date } = useContext(userContext);
   const handleStart = (e) => {
     if (time != 0) {
-      setTimerStart(true);
       intId = setInterval(updateTime, 1000);
+      setTimerStart(true);
       setIntervalId(intId);
       console.log(intId);
       setCustomTimerInput(false);
@@ -127,59 +127,59 @@ function Hero() {
     <>
       <Home />
       <div
-        className=" bg-neutral-950   text-white font-poppins pb-24"
+        className=" bg-neutral-950 text-white font-poppins pb-28    pt-14"
         id="timer"
       >
-        <h1 className=" text-center text-4xl pt-6 text-neutral-100 ">
+        <h1 className="underline underline-offset-8  decoration-teal-200 text-center text-4xl pt-6 text-neutral-100 ">
           Let&apos;s Focus
         </h1>
         <div className="   flex justify-center align-middle gap-4 pt-20 pb-12">
           <button
             onClick={(e) => setTime(Number(e.target.value))}
             value="2"
-            className=" border rounded-full px-4 py-2 hover:bg-zinc-900  "
+            className=" bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
           >
             2 min
           </button>
           <button
             onClick={(e) => setTime(Number(e.target.value))}
             value="10"
-            className=" border rounded-full px-4 py-2 hover:bg-zinc-900  "
+            className=" bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
           >
             10 min
           </button>
           <button
             onClick={(e) => setTime(Number(e.target.value))}
             value="15"
-            className=" border rounded-full px-4 py-2 hover:bg-zinc-900  "
+            className=" bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
           >
             15 min
           </button>
           <button
             onClick={(e) => setTime(Number(e.target.value))}
             value="25"
-            className=" border rounded-full px-4 py-2 hover:bg-zinc-900  "
+            className=" bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
           >
             25 min
           </button>
           <button
             onClick={(e) => setTime(Number(e.target.value))}
             value="45"
-            className=" border rounded-full px-4 py-2 hover:bg-zinc-900  "
+            className=" bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
           >
             45 min
           </button>
           <button
             onClick={(e) => setTime(Number(e.target.value))}
             value="90"
-            className=" border rounded-full px-4 py-2 hover:bg-zinc-900  "
+            className=" bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
           >
             90 min
           </button>
           <div>
             <button
               onClick={(e) => setCustomTimerInput(!cutomTimerInput)}
-              className=" border rounded-full px-4 py-2 hover:bg-zinc-900  "
+              className="bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
             >
               Custom
             </button>

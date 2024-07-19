@@ -8,7 +8,7 @@ function Home() {
           <h1 className=" text-7xl">
             Enhance Your <span className=" text-teal-100"> Productivity </span>with Pomodoro.
           </h1>
-          <p className=" px-20 text-teal-50">
+          <p className=" px-20 text-gray-400 ">
             Harness the power of focused work sessions with our Pomodoro
             platform. Track progress, manage time efficiently, and achieve more
             with less stress. Start improving your productivity today!

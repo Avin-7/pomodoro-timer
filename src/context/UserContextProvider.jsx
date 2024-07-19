@@ -26,7 +26,6 @@ const UserContextProvider = ({ children }) => {
     usageTime,
     setUsageTime,
   };
-  console.log(userData.name);
   return (
     <userContext.Provider value={context}>{children}</userContext.Provider>
   );
