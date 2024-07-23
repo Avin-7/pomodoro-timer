@@ -17,7 +17,7 @@ function Dashboard() {
     scales: {
       x: {
         grid: {
-          display: false,
+          display: true,
         },
       },
       y: {
@@ -39,15 +39,13 @@ function Dashboard() {
   defaults.responsive = true;
 
   const { userData } = useContext(userContext);
-  const [uname, setUname] = useState(userData.name);
+  const [email, setEmail] = useState(userData.email);
   const [data, setData] = useState();
   const getData = async () => {
     try {
-      const res = await service.getDataOfUsername({ uname });
-      // console.log(res.documents.map((i) => console.log(i.Date)));
+      const res = await service.getDataOfEmail({ email });
       if (res) {
         setData(res);
-        console.log(data);
       }
     } catch (error) {
       console.log(error);
@@ -55,7 +53,7 @@ function Dashboard() {
   };
   useEffect(() => {
     getData();
-  }, []);
+  });
   const getLabels = () => {
     var arr = [];
     if (data != undefined) {
@@ -70,6 +68,7 @@ function Dashboard() {
       return arr;
     }
   };
+
   return (
     <>
       <div className="bg-black flex gap-10 py-20 pl-10 font-poppins">
@@ -81,8 +80,8 @@ function Dashboard() {
               className=" w-52 object-scale-down rounded-full "
             />
           </div>
-          <h2 className=" ml-8 text-white ">Username here</h2>
-          <h2 className=" ml-8 text-white ">Email here</h2>
+          <h2 className=" ml-8 text-white ">{userData.name}</h2>
+          <h2 className=" ml-8 text-white ">{email}</h2>
         </div>
         <div className=" w-3/5 bg-white text-white">
           <div className=" p-5">
@@ -104,6 +103,7 @@ function Dashboard() {
                 ],
               }}
               options={options}
+              plugins={plugin}
             />
           </div>
         </div>

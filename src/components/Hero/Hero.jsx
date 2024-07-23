@@ -25,7 +25,9 @@ function Hero() {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  const { loginStatus, date } = useContext(userContext);
+  const { loginStatus, date, userData } = useContext(userContext);
+  const email = userData != null ? userData.email : null;
+
   const handleStart = (e) => {
     if (time != 0) {
       intId = setInterval(updateTime, 1000);
@@ -97,17 +99,17 @@ function Hero() {
       );
     } else if (timerStart) {
       return (
-        <h1 className="text-9xl ">
+        <h1 className="text-9xl max-md:text-8xl">
           {min < 10 ? "0" + min : min} : {sec < 10 ? "0" + sec : sec}
         </h1>
       );
     } else {
-      return <h1 className="  text-9xl ">00:00</h1>;
+      return <h1 className="  text-9xl max-md:text-8xl">00:00</h1>;
     }
   };
 
   async function getData() {
-    const res = await service.getDataOfDate({ date });
+    const res = await service.getDataOfDate({ date, email });
     return res;
   }
 
@@ -127,50 +129,68 @@ function Hero() {
     <>
       <Home />
       <div
-        className=" bg-neutral-950 text-white font-poppins pb-28    pt-14"
+        className=" bg-neutral-950 text-white font-poppins pb-28 pt-14 max-md:pb-14 "
         id="timer"
       >
         <h1 className="underline underline-offset-8  decoration-teal-200 text-center text-4xl pt-6 text-neutral-100 ">
           Let&apos;s Focus
         </h1>
-        <div className="   flex justify-center align-middle gap-4 pt-20 pb-12">
+        <div className=" flex-wrap flex justify-center align-middle gap-4 px-4 pt-20 pb-12">
           <button
-            onClick={(e) => setTime(Number(e.target.value))}
+            onClick={(e) => {
+              setTime(Number(e.target.value));
+              setMin(Number(e.target.value));
+            }}
             value="2"
             className=" bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
           >
             2 min
           </button>
           <button
-            onClick={(e) => setTime(Number(e.target.value))}
+            onClick={(e) => {
+              setTime(Number(e.target.value));
+              setMin(Number(e.target.value));
+            }}
             value="10"
             className=" bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
           >
             10 min
           </button>
           <button
-            onClick={(e) => setTime(Number(e.target.value))}
+            onClick={(e) => {
+              setTime(Number(e.target.value));
+              setMin(Number(e.target.value));
+            }}
             value="15"
             className=" bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
           >
             15 min
           </button>
           <button
-            onClick={(e) => setTime(Number(e.target.value))}
+            onClick={(e) => {
+              setTime(Number(e.target.value));
+              setMin(Number(e.target.value));
+            }}
             value="25"
             className=" bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
           >
             25 min
           </button>
           <button
-            onClick={(e) => setTime(Number(e.target.value))}
+            onClick={(e) => {
+              setTime(Number(e.target.value));
+              setMin(Number(e.target.value));
+            }}
             value="45"
             className=" bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
           >
             45 min
           </button>
           <button
-            onClick={(e) => setTime(Number(e.target.value))}
+            onClick={(e) => {
+              setTime(Number(e.target.value));
+              setMin(Number(e.target.value));
+            }}
             value="90"
             className=" bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
           >
@@ -199,7 +219,7 @@ function Hero() {
             )}
           </div>
         </div>
-        <div className=" flex justify-center align-middle pt-20 pb-12">
+        <div className=" flex justify-center align-middle pt-20 pb-12 max-md:pt-14 max-md:pb-6">
           {timer()}
         </div>
         <div className=" flex justify-center align-middle pb-20 pt-28">
@@ -246,9 +266,9 @@ function Hero() {
           ) : (
             <button
               onClick={(e) => handleStart(e)}
-              className="text-black bg-white font-bold uppercase text-lg border rounded-full px-10 py-3 hover:bg-transparent hover:text-white ease-in-out  "
+              className="text-black bg-white tracking-wider font-bold text-lg border rounded-full px-10 py-3 hover:bg-transparent hover:text-white ease-in-out  "
             >
-              Start
+              Let&apos;s begin
             </button>
           )}
         </div>

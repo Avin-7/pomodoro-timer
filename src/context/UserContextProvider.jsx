@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import userContext from "./userContext";
 import { useState } from "react";
-
+import authService from "../appwrite/auth";
 const getDate = () => {
   const d = new Date();
   const date = d.getDate();
@@ -26,6 +26,22 @@ const UserContextProvider = ({ children }) => {
     usageTime,
     setUsageTime,
   };
+
+  async function getUser() {
+    try {
+      const data = await authService.getCurrentUser();
+      if (data.status) {
+        console.log(data);
+        setLoginStatus(true);
+        setUserData(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    getUser();
+  }, [loginStatus]);
   return (
     <userContext.Provider value={context}>{children}</userContext.Provider>
   );

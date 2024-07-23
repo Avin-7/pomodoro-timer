@@ -25,9 +25,9 @@ function Signup() {
           setLoginStatus(true);
         }
       }
-      const data = await service.getDataOfDate({ date });
-      if (data) {
-        await service.storeData({ date, usageTime, uname });
+      const data = await service.getDataOfDate({ date, email });
+      if (!data) {
+        await service.storeData({ date, usageTime, email });
       }
       navigate("/");
     } catch (error) {
@@ -46,7 +46,7 @@ function Signup() {
         <div className="pt-30 flex justify-center align-middle">
           <form
             action=" "
-            className=" p-2  pt-2 pb-60 flex-col flex w-1/4"
+            className=" p-2 pt-2 pb-60 flex-col flex w-1/4 max-lg:w-1/3 max-md:w-2/3 "
             onSubmit={(e) => {
               e.preventDefault();
               create();
