@@ -39,7 +39,7 @@ function Hero() {
       setIntervalId(intId);
       setCustomTimerInput(false);
       if (loginStatus) {
-        updateTimeUsage(time);
+        updateTimeUsage(time + 1);
       }
     } else {
       alert("Please Select the duration of timer.");
