@@ -12,7 +12,6 @@ function Hero() {
   const [timerCompleted, setTimerCompleted] = useState(false);
   const [custom, setCustom] = useState("");
   const [cutomTimerInput, setCustomTimerInput] = useState(false);
-  const [selectedButton, SetSelectedButton] = useState(true);
   var intId = 0;
   const [intervalId, setIntervalId] = useState(0);
 
@@ -106,11 +105,10 @@ function Hero() {
         </h1>
       );
     } else {
-      if (time != 0) {
+      if (time != 0 && timerStart == false) {
         return (
           <h1 className="text-9xl max-md:text-8xl">
-            {time < 10 ? (time <= 0 ? "0" + (time + 1) : "0" + time) : time} :
-            {sec < 10 ? (time <= 0 ? "00" : sec) : sec}
+            {`${time + 1}` < 10 ? `0${time + 1}` : `${time + 1}`} : 00
           </h1>
         );
       }
@@ -226,8 +224,8 @@ function Hero() {
                 className=" w-36 pl-2 py-2 outline-none bg-transparent text-white border rounded-3xl ml-1"
                 value={custom}
                 onChange={(e) => {
-                  setCustom(Number(e.target.value));
                   setTime(Number(e.target.value) - 1);
+                  setCustom(Number(e.target.value));
                 }}
               />
             ) : (
