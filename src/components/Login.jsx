@@ -8,7 +8,6 @@ import { useNavigate, Link } from "react-router-dom";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
 
   const { setUserData, setLoginStatus, date, usageTime } =
     useContext(userContext);
@@ -33,8 +32,8 @@ function Login() {
       console.log(error + ":::error in login.jsx");
     }
   };
-  const handleShowPassword = (id) => {
-    const ele = document.getElementById(id);
+  const handleShowPassword = () => {
+    const ele = document.getElementById("pass");
     if (ele.type == "password") {
       ele.type = "text";
     } else {
@@ -67,36 +66,31 @@ function Login() {
               placeholder="Enter email"
               onChange={(e) => setEmail(e.target.value)}
             />
-            <div className="border rounded-md flex justify-start  align-middle py-2 px-3">
+            <div className="  flex flex-col justify-start  align-middle ">
               <input
-                className=" outline-none  bg-transparent text-white"
+                className=" border rounded-md py-2 px-3 bg-transparent text-white "
                 type="password"
                 id="pass"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter password"
               />
-              {!showPassword ? (
-                <span
-                  className=" text-white max-xl:pl-0 max-md:pl-11 max-[425px]:pl-10 max-[375px]:pl-4 max-[320px]:pl-0 max-sm:pl-4 max-2xl:pl-20 "
-                  onClick={() => {
-                    setShowPassword(true);
-                    handleShowPassword("pass");
+              <div className="text-white mt-2 flex">
+                <input
+                  type="checkbox"
+                  id="showPassword"
+                  className="w-4 h-4 mr-1 mt-1"
+                  onClick={(e) => {
+                    handleShowPassword();
                   }}
+                />
+                <label
+                  htmlFor="showPassword"
+                  className=" text-md text-gray-200  "
                 >
-                  <ion-icon size="small" name="eye-outline"></ion-icon>
-                </span>
-              ) : (
-                <span
-                  className=" text-white max-md:pl-11 max-[425px]:pl-10 max-[375px]:pl-4 max-sm:pl-4 max-2xl:pl-20"
-                  onClick={() => {
-                    setShowPassword(false);
-                    handleShowPassword("pass");
-                  }}
-                >
-                  <ion-icon size="small" name="eye-off-outline"></ion-icon>
-                </span>
-              )}
+                  Show Password
+                </label>
+              </div>
             </div>
             <Link
               to="/signup"
