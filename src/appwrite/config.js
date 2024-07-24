@@ -45,7 +45,7 @@ export class Service{
             console.log(error  +"::: error in getDataOfDate");
         }
     }
-    async getDataOfEmail({email}) {
+    async getDataOfEmail(email) {
         try {
             const res = await this.database.listDocuments(conf.appWriteDatabaseId, conf.appWriteCollectionId,[
                 Query.equal('Email', email)

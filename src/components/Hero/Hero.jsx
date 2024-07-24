@@ -12,6 +12,7 @@ function Hero() {
   const [timerCompleted, setTimerCompleted] = useState(false);
   const [custom, setCustom] = useState("");
   const [cutomTimerInput, setCustomTimerInput] = useState(false);
+  const [selectedButton, SetSelectedButton] = useState(true);
   var intId = 0;
   const [intervalId, setIntervalId] = useState(0);
 
@@ -28,12 +29,15 @@ function Hero() {
   const { loginStatus, date, userData } = useContext(userContext);
   const email = userData != null ? userData.email : null;
 
+  let seconds = 60;
+  var totalMinutes = 0;
+
   const handleStart = (e) => {
     if (time != 0) {
-      intId = setInterval(updateTime, 1000);
       setTimerStart(true);
+      totalMinutes = time;
+      intId = setInterval(updateTime, 1000);
       setIntervalId(intId);
-      console.log(intId);
       setCustomTimerInput(false);
       if (loginStatus) {
         updateTimeUsage(time);
@@ -42,14 +46,12 @@ function Hero() {
       alert("Please Select the duration of timer.");
     }
   };
-  let seconds = 60;
-  let totalMinutes = time - 1;
 
   function updateTime() {
     console.log(totalMinutes);
-    setMin(totalMinutes);
     seconds--;
     setSec(seconds);
+    setMin(totalMinutes);
     if (seconds == 0) {
       if (seconds == 0 && totalMinutes == 0) {
         setTimerCompleted(true);
@@ -104,6 +106,14 @@ function Hero() {
         </h1>
       );
     } else {
+      if (time != 0) {
+        return (
+          <h1 className="text-9xl max-md:text-8xl">
+            {time < 10 ? (time <= 0 ? "0" + (time + 1) : "0" + time) : time} :
+            {sec < 10 ? (time <= 0 ? "00" : sec) : sec}
+          </h1>
+        );
+      }
       return <h1 className="  text-9xl max-md:text-8xl">00:00</h1>;
     }
   };
@@ -138,9 +148,10 @@ function Hero() {
         <div className=" flex-wrap flex justify-center align-middle gap-4 px-4 pt-20 pb-12">
           <button
             onClick={(e) => {
-              setTime(Number(e.target.value));
-              setMin(Number(e.target.value));
+              setTime(Number(e.target.value) - 1);
+              setMin(Number(e.target.value) - 1);
             }}
+            id="2"
             value="2"
             className=" bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
           >
@@ -148,9 +159,10 @@ function Hero() {
           </button>
           <button
             onClick={(e) => {
-              setTime(Number(e.target.value));
-              setMin(Number(e.target.value));
+              setTime(Number(e.target.value) - 1);
+              setMin(Number(e.target.value) - 1);
             }}
+            id="10"
             value="10"
             className=" bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
           >
@@ -158,9 +170,10 @@ function Hero() {
           </button>
           <button
             onClick={(e) => {
-              setTime(Number(e.target.value));
-              setMin(Number(e.target.value));
+              setTime(Number(e.target.value) - 1);
+              setMin(Number(e.target.value) - 1);
             }}
+            id="15"
             value="15"
             className=" bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
           >
@@ -168,9 +181,10 @@ function Hero() {
           </button>
           <button
             onClick={(e) => {
-              setTime(Number(e.target.value));
-              setMin(Number(e.target.value));
+              setTime(Number(e.target.value) - 1);
+              setMin(Number(e.target.value) - 1);
             }}
+            id="25"
             value="25"
             className=" bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
           >
@@ -178,9 +192,10 @@ function Hero() {
           </button>
           <button
             onClick={(e) => {
-              setTime(Number(e.target.value));
-              setMin(Number(e.target.value));
+              setTime(Number(e.target.value) - 1);
+              setMin(Number(e.target.value) - 1);
             }}
+            id="45"
             value="45"
             className=" bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
           >
@@ -188,9 +203,10 @@ function Hero() {
           </button>
           <button
             onClick={(e) => {
-              setTime(Number(e.target.value));
-              setMin(Number(e.target.value));
+              setTime(Number(e.target.value) - 1);
+              setMin(Number(e.target.value) - 1);
             }}
+            id="90"
             value="90"
             className=" bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
           >
@@ -211,7 +227,7 @@ function Hero() {
                 value={custom}
                 onChange={(e) => {
                   setCustom(Number(e.target.value));
-                  setTime(Number(e.target.value));
+                  setTime(Number(e.target.value) - 1);
                 }}
               />
             ) : (

@@ -8,6 +8,8 @@ import { useNavigate, Link } from "react-router-dom";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
   const { setUserData, setLoginStatus, date, usageTime } =
     useContext(userContext);
 
@@ -29,6 +31,14 @@ function Login() {
       navigate("/");
     } catch (error) {
       console.log(error + ":::error in login.jsx");
+    }
+  };
+  const handleShowPassword = (id) => {
+    const ele = document.getElementById(id);
+    if (ele.type == "password") {
+      ele.type = "text";
+    } else {
+      ele.type = "password";
     }
   };
   return (
@@ -57,14 +67,37 @@ function Login() {
               placeholder="Enter email"
               onChange={(e) => setEmail(e.target.value)}
             />
-            <input
-              className=" border rounded-md bg-transparent text-white px-3 py-2 mb-2"
-              type="password"
-              id="pass"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter password"
-            />
+            <div className="border rounded-md flex justify-start  align-middle py-2 px-3">
+              <input
+                className=" outline-none  bg-transparent text-white"
+                type="password"
+                id="pass"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter password"
+              />
+              {!showPassword ? (
+                <span
+                  className=" text-white pl-16"
+                  onClick={() => {
+                    setShowPassword(true);
+                    handleShowPassword("pass");
+                  }}
+                >
+                  <ion-icon size="small" name="eye-outline"></ion-icon>
+                </span>
+              ) : (
+                <span
+                  className=" text-white pl-16"
+                  onClick={() => {
+                    setShowPassword(false);
+                    handleShowPassword("pass");
+                  }}
+                >
+                  <ion-icon size="small" name="eye-off-outline"></ion-icon>
+                </span>
+              )}
+            </div>
             <Link
               to="/signup"
               className=" text-white mb-3 hover:text-gray-300 "

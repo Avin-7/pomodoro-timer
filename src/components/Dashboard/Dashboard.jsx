@@ -5,6 +5,9 @@ import service from "../../appwrite/config";
 import userContext from "../../context/userContext";
 function Dashboard() {
   // defaults.maintainAspectRatio = false;
+
+  const { userData } = useContext(userContext);
+  const [data, setData] = useState();
   var options = {
     layout: {
       padding: {
@@ -38,12 +41,9 @@ function Dashboard() {
 
   defaults.responsive = true;
 
-  const { userData } = useContext(userContext);
-  const [email, setEmail] = useState(userData.email);
-  const [data, setData] = useState();
   const getData = async () => {
     try {
-      const res = await service.getDataOfEmail({ email });
+      const res = await service.getDataOfEmail(userData.email);
       if (res) {
         setData(res);
       }
@@ -71,39 +71,39 @@ function Dashboard() {
 
   return (
     <>
-      <div className="bg-black flex gap-10 py-20 pl-10 font-poppins">
-        <div className="py-10 w-1/3 bg-neutral-950 h-full">
-          <div className="my-4 rounded-full flex justify-center align-middle">
+      <div className=" bg-neutral-900  flex gap-10 py-20 pl-10 font-poppins max-md:block pb-18 max-sm:pl-0 ">
+        <div className="py-20 w-1/3 bg-neutral-950 rounded-lg h-full max-lg:w-1/4 max-lg:py-4 max-md:w-11/12 max-md:pr-2 max-md:h-1/2 max-md:mt-4 max-sm:mx-4 ">
+          <div className="my-8 rounded-full flex justify-center align-middle ">
             <img
               src="src\assets\dummy-profile-pic-300x300-1.png"
               alt="image here"
-              className=" w-52 object-scale-down rounded-full "
+              className=" w-52 max-lg:w-32 object-scale-down rounded-full"
             />
           </div>
-          <h2 className=" ml-8 text-white ">{userData.name}</h2>
-          <h2 className=" ml-8 text-white ">{email}</h2>
+          <h2 className=" ml-8 my-2 text-white max-lg:text-sm">
+            username : {userData.name}
+          </h2>
+          <h2 className=" ml-8 mb-8 text-white max-lg:text-sm">
+            Email : {userData.email}
+          </h2>
         </div>
-        <div className=" w-3/5 bg-white text-white">
-          <div className=" p-5">
+        <div className=" bg-neutral-950 text-white rounded-lg w-3/5 max-md:w-11/12 max-md:h-96 max-sm:h-96 max-sm:w-11/12 max-sm:mx-4 ">
+          <h1 className="  text-xl p-1 mt-2 ml-2 pb-14 ">Usage</h1>
+          <div className=" w-full h-full">
             <Bar
               data={{
                 labels: getLabels(),
                 datasets: [
                   {
-                    label: "Time",
+                    label: "Time used in minutes",
                     data: getTimeUsage(),
-                    backgroundColor: [
-                      "rgb(198,123,230)",
-                      "rgb(198,123,170)",
-                      "rgb(200,189,220)",
-                    ],
+                    backgroundColor: ["rgb(198,123,230)"],
                     borderRadius: 10,
                     barThickness: 50,
                   },
                 ],
               }}
               options={options}
-              plugins={plugin}
             />
           </div>
         </div>

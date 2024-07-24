@@ -45,11 +45,11 @@ function Navbar() {
                 </Link>
               </div>
             ) : (
-              <div className=" flex gap-14">
+              <div className=" flex flex-col pb-8 gap-14">
                 <Link
                   onClick={() => setShowLinks(false)}
                   to="/dashboard"
-                  className=" text-white rounded-md text-lg hover:text-teal-100"
+                  className=" text-white rounded-md text-lg hover:text-teal-100 pl-6"
                 >
                   Dashboard
                 </Link>
@@ -58,7 +58,7 @@ function Navbar() {
                     logoutHandler();
                     setShowLinks(false);
                   }}
-                  className=" text-white rounded-md text-lg hover:text-teal-100"
+                  className=" text-white rounded-md text-lg hover:text-teal-100 text-start pl-6"
                 >
                   Logout
                 </button>
@@ -133,17 +133,13 @@ function Navbar() {
             </Link>
             {showLinks ? (
               <div className=" absolute right-10 top-6">
-                <button
-                  onClick={() => setShowLinks(!showLinks)}
-                >
+                <button onClick={() => setShowLinks(!showLinks)}>
                   <ion-icon name="close"></ion-icon>
                 </button>
               </div>
             ) : (
               <div className=" absolute right-10 top-6">
-                <button
-                  onClick={() => setShowLinks(!showLinks)}
-                >
+                <button onClick={() => setShowLinks(!showLinks)}>
                   <ion-icon name="reorder-three-outline"></ion-icon>
                 </button>
               </div>
