@@ -52,7 +52,7 @@ function Login() {
         <div className=" pt-30 flex justify-center align-middle ">
           <form
             action=" "
-            className="p-2 pb-14 pt-2 flex-col flex w-1/4 max-lg:w-1/3 max-md:w-2/3 max-sm:w-3/4"
+            className="p-2 pb-14 pt-2 flex-col flex w-1/4 max-lg:w-1/3 max-md:w-11/12 max-sm:w-3/4 max-[320px]:w-4/5"
             onSubmit={(e) => {
               e.preventDefault();
               login();
@@ -78,7 +78,7 @@ function Login() {
               />
               {!showPassword ? (
                 <span
-                  className=" text-white pl-16"
+                  className=" text-white max-xl:pl-0 max-md:pl-11 max-[425px]:pl-10 max-[375px]:pl-4 max-[320px]:pl-0 max-sm:pl-4 max-2xl:pl-20 "
                   onClick={() => {
                     setShowPassword(true);
                     handleShowPassword("pass");
@@ -88,7 +88,7 @@ function Login() {
                 </span>
               ) : (
                 <span
-                  className=" text-white pl-16"
+                  className=" text-white max-md:pl-11 max-[425px]:pl-10 max-[375px]:pl-4 max-sm:pl-4 max-2xl:pl-20"
                   onClick={() => {
                     setShowPassword(false);
                     handleShowPassword("pass");
@@ -100,7 +100,7 @@ function Login() {
             </div>
             <Link
               to="/signup"
-              className=" text-white mb-3 hover:text-gray-300 "
+              className=" text-teal-100 mt-2 mb-3 hover:text-gray-300 "
             >
               Don&apos;t have an account? Create new one.
             </Link>
