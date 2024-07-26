@@ -26,6 +26,13 @@ function Navbar() {
             >
               Home
             </Link>
+            <Link
+              onClick={() => setShowLinks(false)}
+              to="/dashboard"
+              className=" text-white rounded-md text-lg hover:text-teal-100 pl-6"
+            >
+              Dashboard
+            </Link>
 
             {!loginStatus ? (
               <div className="flex flex-col gap-14 pb-8">
@@ -46,13 +53,6 @@ function Navbar() {
               </div>
             ) : (
               <div className=" flex flex-col pb-8 gap-14">
-                <Link
-                  onClick={() => setShowLinks(false)}
-                  to="/dashboard"
-                  className=" text-white rounded-md text-lg hover:text-teal-100 pl-6"
-                >
-                  Dashboard
-                </Link>
                 <button
                   onClick={() => {
                     logoutHandler();
@@ -80,16 +80,22 @@ function Navbar() {
             Pomodoro
           </Link>
         </div>
-        <div className="flex gap-14 absolute right-14 ">
+        <div className="flex gap-14 max-lg:gap-9 absolute right-14 ">
           <Link
             to="/"
             className=" text-white rounded-md text-lg hover:text-teal-100"
           >
             Home
           </Link>
+          <Link
+            to="/dashboard"
+            className=" text-white rounded-md text-lg hover:text-teal-100"
+          >
+            Dashboard
+          </Link>
 
           {!loginStatus ? (
-            <div className=" flex gap-14">
+            <div className=" flex gap-14 max-lg:gap-9">
               <Link
                 to="/signup"
                 className=" text-white rounded-md text-lg hover:text-teal-100"
@@ -105,12 +111,6 @@ function Navbar() {
             </div>
           ) : (
             <div className=" flex gap-14">
-              <Link
-                to="/dashboard"
-                className=" text-white rounded-md text-lg hover:text-teal-100"
-              >
-                Dashboard
-              </Link>
               <button
                 className=" text-white rounded-md text-lg hover:text-teal-100"
                 onClick={logoutHandler}

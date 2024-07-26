@@ -6,7 +6,7 @@ import userContext from "../../context/userContext";
 function Dashboard() {
   // defaults.maintainAspectRatio = false;
 
-  const { userData } = useContext(userContext);
+  const { userData, loginStatus } = useContext(userContext);
   const [data, setData] = useState();
   var options = {
     layout: {
@@ -69,7 +69,7 @@ function Dashboard() {
     }
   };
 
-  return (
+  return loginStatus ? (
     <>
       <div className=" bg-neutral-900  flex gap-10 py-20 pl-10 font-poppins max-md:block pb-18 max-sm:pl-0 ">
         <div className="py-20 w-1/3 bg-neutral-950 rounded-lg h-full max-lg:w-1/4 max-lg:py-4 max-md:w-11/12 max-md:pr-2 max-md:h-1/2 max-md:mt-4 max-sm:mx-4 ">
@@ -111,6 +111,14 @@ function Dashboard() {
         </div>
       </div>
     </>
+  ) : (
+    <div className=" flex justify-center align-middle">
+      <div>
+        <h1 className=" text-2xl text-white text-center pt-48 break-words">
+          Please Signup or Login to view Dashboard...
+        </h1>
+      </div>
+    </div>
   );
 }
 
