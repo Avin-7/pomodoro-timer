@@ -25,7 +25,8 @@ function Hero() {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  const { loginStatus, date, userData } = useContext(userContext);
+  const { loginStatus, date, userData, setTimerRunning, timerRunning } =
+    useContext(userContext);
   const email = userData != null ? userData.email : null;
 
   let seconds = 60;
@@ -38,16 +39,13 @@ function Hero() {
       intId = setInterval(updateTime, 1000);
       setIntervalId(intId);
       setCustomTimerInput(false);
-      if (loginStatus) {
-        updateTimeUsage(time + 1);
-      }
+      setTimerRunning(true);
     } else {
       alert("Please Select the duration of timer.");
     }
   };
 
   function updateTime() {
-    console.log(totalMinutes);
     seconds--;
     setSec(seconds);
     setMin(totalMinutes);
@@ -55,6 +53,7 @@ function Hero() {
       if (seconds == 0 && totalMinutes == 0) {
         setTimerCompleted(true);
         handleStop();
+        updateTimeUsage(time + 1);
       }
       seconds = 60;
       totalMinutes = totalMinutes - 1;
@@ -71,6 +70,7 @@ function Hero() {
     setCustom(0);
     setCustomTimerInput(false);
     setIsModalOpen(false);
+    setTimerRunning(false);
   }
 
   const hideMessage = () => {
@@ -81,7 +81,6 @@ function Hero() {
   const timer = () => {
     if (timerCompleted) {
       clearInterval(intervalId);
-
       return (
         <div className="outline rounded-lg flex justify-center align-middle z-10">
           <div className=" bg-zinc-950 ">
@@ -99,6 +98,9 @@ function Hero() {
         </div>
       );
     } else if (timerStart) {
+      if (timerRunning == false) {
+        handleStop();
+      }
       return (
         <h1 className="text-9xl max-md:text-8xl">
           {min < 10 ? "0" + min : min} : {sec < 10 ? "0" + sec : sec}

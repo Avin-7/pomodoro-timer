@@ -16,6 +16,7 @@ const UserContextProvider = ({ children }) => {
   const [loginStatus, setLoginStatus] = useState(false);
   const [date, setDate] = useState(getDate());
   const [usageTime, setUsageTime] = useState(0);
+  const [timerRunning, setTimerRunning] = useState(false);
   const context = {
     userData,
     setUserData,
@@ -25,6 +26,8 @@ const UserContextProvider = ({ children }) => {
     setDate,
     usageTime,
     setUsageTime,
+    timerRunning,
+    setTimerRunning,
   };
 
   async function getUser() {
