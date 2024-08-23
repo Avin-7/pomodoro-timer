@@ -34,7 +34,6 @@ const UserContextProvider = ({ children }) => {
     try {
       const data = await authService.getCurrentUser();
       if (data.status) {
-        console.log(data);
         setLoginStatus(true);
         setUserData(data);
       }
