@@ -25,8 +25,15 @@ function Hero() {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  const { loginStatus, date, userData, setTimerRunning, timerRunning } =
-    useContext(userContext);
+  const {
+    loginStatus,
+    date,
+    userData,
+    setTimerRunning,
+    timerRunning,
+    usageTime,
+    setUsageTime,
+  } = useContext(userContext);
   const email = userData != null ? userData.email : null;
 
   let seconds = 60;
@@ -131,7 +138,12 @@ function Hero() {
       await service.updateDocument(currentData.$id, newTime);
       console.log("updated sucessfully");
     } else {
-      console.log("data is not updated");
+      const res = await service.storeData({ date, usageTime, email });
+      if (res) {
+        const newTime = time;
+        await service.updateDocument(userData.$id, newTime);
+      }
+      console.log("new data is stored");
     }
   };
 
