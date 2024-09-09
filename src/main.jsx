@@ -8,6 +8,7 @@ import Signup from "./components/Signup.jsx";
 import Login from "./components/Login.jsx";
 import Home from "./components/Hero/Home.jsx";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
+import Todo from "./components/Todo/Todo.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "/todos",
+        element: <Todo />,
       },
     ],
   },
