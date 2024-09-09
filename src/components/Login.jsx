@@ -8,6 +8,7 @@ import { useNavigate, Link } from "react-router-dom";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showWarning, setShowWarning] = useState(false);
 
   const { setUserData, setLoginStatus, date, usageTime } =
     useContext(userContext);
@@ -29,6 +30,7 @@ function Login() {
       }
       navigate("/");
     } catch (error) {
+      setShowWarning(!showWarning);
       console.log(error + ":::error in login.jsx");
     }
   };
@@ -42,7 +44,7 @@ function Login() {
   };
   return (
     <div>
-      <div className="bg-neutral-950 font-poppins pb-64 ">
+      <div className="bg-neutral-950 font-poppins">
         <div>
           <h1 className=" text-white flex justify-center align-middle pt-36 pb-4 text-3xl">
             Login
@@ -66,6 +68,7 @@ function Login() {
               placeholder="Enter email"
               onChange={(e) => setEmail(e.target.value)}
             />
+
             <div className="  flex flex-col justify-start  align-middle ">
               <input
                 className=" border rounded-md py-2 px-3 bg-transparent text-white "
@@ -91,6 +94,13 @@ function Login() {
                   Show Password
                 </label>
               </div>
+              {showWarning ? (
+                <span className="text-red-400">
+                  Incorrect email or password
+                </span>
+              ) : (
+                ""
+              )}
             </div>
             <Link
               to="/signup"

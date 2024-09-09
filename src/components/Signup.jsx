@@ -46,7 +46,7 @@ function Signup() {
 
   return (
     <>
-      <div className="bg-neutral-950 font-poppins pb-64">
+      <div className="bg-neutral-950 font-poppins">
         <div>
           <h1 className=" text-white flex justify-center align-middle pt-36 pb-4 text-3xl">
             Sign Up
