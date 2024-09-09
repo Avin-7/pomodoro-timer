@@ -40,16 +40,23 @@ function Navbar() {
                   setShowLinks(false);
                   handleExit();
                 }}
-                // to="/dashboard"
                 className=" text-white rounded-md text-lg hover:text-teal-100 pl-6"
               >
                 Dashboard
+              </Link>
+              <Link
+                onClick={() => {
+                  setShowLinks(false);
+                  handleExit();
+                }}
+                className=" text-white rounded-md text-lg hover:text-teal-100 pl-6"
+              >
+                Todos
               </Link>
 
               {!loginStatus ? (
                 <div className="flex flex-col gap-14 pb-8">
                   <Link
-                    // to="/signup"
                     className=" text-white rounded-md text-lg hover:text-teal-100 pl-6"
                     onClick={() => {
                       setShowLinks(false);
@@ -59,7 +66,6 @@ function Navbar() {
                     Signup
                   </Link>
                   <Link
-                    // to="/login"
                     onClick={() => {
                       setShowLinks(false);
                       handleExit();
@@ -76,9 +82,9 @@ function Navbar() {
                       logoutHandler();
                       setShowLinks(false);
                     }}
-                    className=" text-white rounded-md text-lg hover:text-teal-100 text-start pl-6"
+                    className=" bg-white text-black px-4 py-1 rounded-md text-lg hover:bg-teal-100 text-start pl-6"
                   >
-                    Logout
+                    Log out
                   </button>
                 </div>
               )}
@@ -105,6 +111,13 @@ function Navbar() {
               >
                 Dashboard
               </Link>
+              <Link
+                onClick={() => setShowLinks(false)}
+                to="/todos"
+                className=" text-white rounded-md text-lg hover:text-teal-100 pl-6"
+              >
+                Todos
+              </Link>
 
               {!loginStatus ? (
                 <div className="flex flex-col gap-14 pb-8">
@@ -130,9 +143,9 @@ function Navbar() {
                       logoutHandler();
                       setShowLinks(false);
                     }}
-                    className=" text-white rounded-md text-lg hover:text-teal-100 text-start pl-6"
+                    className="  bg-white text-black px-4 py-1 rounded-md text-lg hover:bg-teal-100 text-start pl-6"
                   >
-                    Logout
+                    Log out
                   </button>
                 </div>
               )}
@@ -159,9 +172,9 @@ function Navbar() {
             <div className="flex absolute left-24 nav-bar">
               <Link
                 // to="/"
-                className=" text-emerald-50 text-xl underline decoration-teal-200 underline-offset-4 "
+                className=" text-emerald-50 text-xl underline decoration-teal-200 underline-offset-4 tracking-wider"
               >
-                Pomodoro
+                Foczy
               </Link>
             </div>
             <div className="flex gap-14 max-lg:gap-9 absolute right-14 ">
@@ -180,6 +193,14 @@ function Navbar() {
                 }}
               >
                 Dashboard
+              </Link>
+              <Link
+                className=" text-white rounded-md text-lg hover:text-teal-100"
+                onClick={() => {
+                  handleExit();
+                }}
+              >
+                Todos
               </Link>
 
               {!loginStatus ? (
@@ -204,10 +225,10 @@ function Navbar() {
               ) : (
                 <div className=" flex gap-14">
                   <button
-                    className=" text-white rounded-md text-lg hover:text-teal-100"
+                    className=" bg-white text-black px-4 py-1 rounded-md text-lg hover:bg-teal-100"
                     onClick={logoutHandler}
                   >
-                    Logout
+                    Log out
                   </button>
                 </div>
               )}
@@ -220,7 +241,7 @@ function Navbar() {
                 to="/"
                 className=" text-emerald-50 text-xl underline decoration-teal-200 underline-offset-4 "
               >
-                Pomodoro
+                Foczy
               </Link>
             </div>
             <div className="flex gap-14 max-lg:gap-9 absolute right-14 ">
@@ -235,6 +256,12 @@ function Navbar() {
                 className=" text-white rounded-md text-lg hover:text-teal-100"
               >
                 Dashboard
+              </Link>
+              <Link
+                to="/todos"
+                className=" text-white rounded-md text-lg hover:text-teal-100"
+              >
+                Todos
               </Link>
 
               {!loginStatus ? (
@@ -255,10 +282,10 @@ function Navbar() {
               ) : (
                 <div className=" flex gap-14">
                   <button
-                    className=" text-white rounded-md text-lg hover:text-teal-100"
+                    className=" bg-white text-black px-4 py-1 rounded-md text-lg hover:bg-teal-100"
                     onClick={logoutHandler}
                   >
-                    Logout
+                    Log out
                   </button>
                 </div>
               )}
@@ -278,7 +305,7 @@ function Navbar() {
                     handleExit();
                   }}
                 >
-                  Pomodoro
+                  Foczy
                 </Link>
                 {showLinks ? (
                   <div className=" absolute right-10 top-6">
@@ -303,7 +330,7 @@ function Navbar() {
                   to="/"
                   className=" text-emerald-50 text-xl underline decoration-teal-200 underline-offset-4 ml-2"
                 >
-                  Pomodoro
+                  Foczy
                 </Link>
                 {showLinks ? (
                   <div className=" absolute right-10 top-6">
