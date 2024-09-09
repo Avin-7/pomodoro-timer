@@ -4,8 +4,6 @@ import { Bar } from "react-chartjs-2";
 import service from "../../appwrite/config";
 import userContext from "../../context/userContext";
 function Dashboard() {
-  // defaults.maintainAspectRatio = false;
-
   const { userData, loginStatus } = useContext(userContext);
   const [data, setData] = useState();
   var options = {
@@ -53,7 +51,7 @@ function Dashboard() {
   };
   useEffect(() => {
     getData();
-  });
+  }, [loginStatus]);
   const getLabels = () => {
     var arr = [];
     if (data != undefined) {
@@ -71,8 +69,8 @@ function Dashboard() {
 
   return loginStatus ? (
     <>
-      <div className=" bg-neutral-900  flex gap-10 py-20 pl-10 font-poppins max-md:block pb-18 max-sm:pl-0 ">
-        <div className="py-20 w-1/3 bg-neutral-950 rounded-lg h-full max-lg:w-1/4 max-lg:py-4 max-md:w-11/12 max-md:pr-2 max-md:h-1/2 max-md:mt-4 max-sm:mx-4 ">
+      <div className=" flex gap-10 py-20 pl-10 font-poppins max-md:block max-sm:pl-0 ">
+        <div className="py-20 w-1/3 outline-double outline-violet-200 bg-neutral-950 rounded-lg h-full max-lg:w-1/4 max-lg:py-4 max-md:w-11/12 max-md:pr-2 max-md:h-1/2 max-md:mt-4 max-sm:mx-4 ">
           <div className="my-8 rounded-full flex justify-center align-middle ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +87,7 @@ function Dashboard() {
             Email : {userData.email}
           </h2>
         </div>
-        <div className=" bg-neutral-950 text-white rounded-lg w-3/5 max-md:w-11/12 max-md:h-96 max-sm:h-96 max-sm:w-11/12 max-sm:mx-4 ">
+        <div className=" bg-neutral-950 outline-double outline-violet-200 text-white rounded-lg w-3/5 max-md:w-11/12 max-md:h-96 max-sm:h-96 max-sm:w-11/12 max-sm:mx-4 ">
           <h1 className="  text-xl p-1 mt-2 ml-2 pb-14 ">Usage</h1>
           <div className=" w-full h-full">
             <Bar
