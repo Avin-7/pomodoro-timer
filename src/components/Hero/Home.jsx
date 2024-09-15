@@ -1,18 +1,7 @@
-import React, { useContext, useEffect } from "react";
-import userContext from "../../context/userContext";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
+import React from "react";
 function Home() {
-  const { loginStatus } = useContext(userContext);
-
-  useEffect(() => {
-    if (loginStatus) toast.success("Login sucessfull !!!");
-  }, [loginStatus]);
-
   return (
     <>
-      <ToastContainer />
       <div className="py-52 font-poppins bg-black flex justify-center align-middle text-white">
         <div className="max-md:px-0 px-32 text-center flex flex-col gap-10">
           <h1 className="max-md:text-5xl max-md:px-4 text-7xl">

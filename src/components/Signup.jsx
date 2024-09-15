@@ -18,7 +18,7 @@ function Signup() {
 
   //Toast function
   const notify = () => {
-    toast.success("login sucessfull !!", {
+    toast.success("Created account Successfully!", {
       autoClose: 2000,
     });
   };

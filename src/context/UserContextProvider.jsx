@@ -36,14 +36,16 @@ const UserContextProvider = ({ children }) => {
 
   async function getUser() {
     try {
-      const data = await authService.getCurrentUser();
-      if (data.status) {
-        setLoginStatus(true);
-        setUserData(data);
-        setEmail(data.email);
-        const res = await service.getDataOfDate({ date, email });
-        if (!res) {
-          await service.storeData({ date, usageTime, email });
+      if (loginStatus == false) {
+        const data = await authService.getCurrentUser();
+        if (data.status) {
+          setLoginStatus(true);
+          setUserData(data);
+          setEmail(data.email);
+          const res = await service.getDataOfDate({ date, email });
+          if (!res) {
+            await service.storeData({ date, usageTime, email });
+          }
         }
       }
     } catch (error) {
