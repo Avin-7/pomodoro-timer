@@ -23,7 +23,7 @@ function Navbar() {
   const showNavLinks = () => {
     if (timerRunning) {
       return (
-        <div>
+        <div className="  ">
           <div>
             <div className="bg-neutral-900 flex flex-col gap-14 absolute top-12 right-8 pt-8 mt-8 w-1/2 rounded-md">
               <Link
@@ -94,7 +94,7 @@ function Navbar() {
       );
     } else {
       return (
-        <div>
+        <div className="">
           <div>
             <div className="bg-neutral-900 flex flex-col gap-14 absolute top-12 right-8 pt-8 mt-8 w-1/2 rounded-md">
               <Link
@@ -143,7 +143,7 @@ function Navbar() {
                       logoutHandler();
                       setShowLinks(false);
                     }}
-                    className="  bg-white text-black px-4 py-1 rounded-md text-lg hover:bg-teal-100 text-start pl-6"
+                    className="  bg-white max-md:bg-transparent max-md:text-white max-md:hover:text-teal-100 text-black px-4 py-1 rounded-md text-lg hover:bg-teal-100 text-start pl-6"
                   >
                     Log out
                   </button>
@@ -166,7 +166,7 @@ function Navbar() {
 
   return (
     <>
-      <div className=" max-md:hidden  bg-transparent backdrop-blur-lg text-white flex gap-44 pb-10 pt-6 font-poppins fixed top-0 w-full ">
+      <div className="  max-md:hidden bg-transparent backdrop-blur-lg text-white flex gap-44 pb-10 pt-6 font-poppins fixed top-0 w-full ">
         {timerRunning ? (
           <>
             <div className="flex absolute left-24 nav-bar">
@@ -236,7 +236,7 @@ function Navbar() {
           </>
         ) : (
           <>
-            <div className="flex absolute left-24 nav-bar">
+            <div className="  flex absolute left-24 nav-bar">
               <Link
                 to="/"
                 className=" text-emerald-50 text-xl underline decoration-teal-200 underline-offset-4 "
@@ -294,7 +294,7 @@ function Navbar() {
         )}
       </div>
 
-      <div className=" hidden max-sm:flex">
+      <div className="  hidden max-sm:flex ">
         <div className=" bg-transparent backdrop-blur-lg text-white flex gap-44 pb-10 pt-6 font-poppins fixed top-0 w-full ">
           {timerRunning ? (
             <>
@@ -308,7 +308,7 @@ function Navbar() {
                   Foczy
                 </Link>
                 {showLinks ? (
-                  <div className=" absolute right-10 top-6">
+                  <div className=" absolute right-10 top- 6">
                     <button onClick={() => setShowLinks(!showLinks)}>
                       <ion-icon name="close"></ion-icon>
                     </button>
