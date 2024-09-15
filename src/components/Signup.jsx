@@ -3,6 +3,9 @@ import authService from "../appwrite/auth";
 import userContext from "../context/userContext";
 import service from "../appwrite/config";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function Signup() {
   const [uname, setUname] = useState("");
   const [email, setEmail] = useState("");
@@ -10,7 +13,16 @@ function Signup() {
 
   const { setUserData, setLoginStatus, date, usageTime } =
     useContext(userContext);
+
   const navigate = useNavigate();
+
+  //Toast function
+  const notify = () => {
+    toast.success("login sucessfull !!", {
+      autoClose: 2000,
+    });
+  };
+
   const create = async () => {
     try {
       const userData = await authService.createAccount({
@@ -23,13 +35,16 @@ function Signup() {
         if (userData) {
           setUserData(userData);
           setLoginStatus(true);
+          notify();
         }
       }
       const data = await service.getDataOfDate({ date, email });
       if (!data) {
         await service.storeData({ date, usageTime, email });
       }
-      navigate("/");
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
     } catch (error) {
       console.log(error);
     }
@@ -46,6 +61,8 @@ function Signup() {
 
   return (
     <>
+      <ToastContainer />
+
       <div className="bg-neutral-950 font-poppins">
         <div>
           <h1 className=" text-white flex justify-center align-middle pt-36 pb-4 text-3xl">

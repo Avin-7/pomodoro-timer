@@ -4,8 +4,13 @@ import authService from "../appwrite/auth";
 import userContext from "../context/userContext";
 import service from "../appwrite/config";
 import { useNavigate, Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
+
+
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showWarning, setShowWarning] = useState(false);
@@ -14,6 +19,15 @@ function Login() {
     useContext(userContext);
 
   const navigate = useNavigate();
+
+  //Toast function
+  const notify = () => {
+    toast.success("login sucessfull !!", {
+      autoClose: 2000,
+    });
+  };
+
+  //Login Function
   const login = async () => {
     try {
       const session = await authService.login({ email, password });
@@ -22,13 +36,16 @@ function Login() {
         if (userData) {
           setUserData(userData);
           setLoginStatus(true);
+          notify();
         }
       }
       const data = await service.getDataOfDate({ date, email });
       if (!data) {
         await service.storeData({ date, usageTime, email });
       }
-      navigate("/");
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
     } catch (error) {
       setShowWarning(!showWarning);
       console.log(error + ":::error in login.jsx");
@@ -44,6 +61,8 @@ function Login() {
   };
   return (
     <div>
+      <ToastContainer />
+
       <div className="bg-neutral-950 font-poppins">
         <div>
           <h1 className=" text-white flex justify-center align-middle pt-36 pb-4 text-3xl">
