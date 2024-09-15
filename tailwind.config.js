@@ -10,7 +10,9 @@ export default {
         poppins: ["Poppins", "sans-serif"],
       },
       width: {
-        '128': '44rem',
+        '100':'30rem',
+        '120': '44rem',
+        '128': '62rem',
       }
     },
     
