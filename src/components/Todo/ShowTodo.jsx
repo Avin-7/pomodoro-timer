@@ -79,7 +79,7 @@ function ShowTodo({ todo }) {
           </div>
           <div>
             <textarea
-              className={`bg-transparent resize-none py-2 w-128  2xl:text-3xl  max-xl:w-120 max-lg:w-100 max-md:w-80 max-sm:w-48 h-24 max-md:h-32 text-lg outline-none break-words ${
+              className={`bg-transparent resize-none py-2 w-128  2xl:text-3xl  max-xl:w-120 max-lg:w-100 max-md:w-80 max-sm:w-48 h-20 max-md:h-28 text-lg outline-none break-words ${
                 completed ? "line-through" : ""
               }`}
               value={newContent}
