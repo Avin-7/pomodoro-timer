@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import userContext from "../../context/userContext";
 import service from "../../appwrite/config";
 import Home from "./Home";
-import About from "../About/About";
 import Footer from "../Footer/Footer";
 import { Modal, ConfigProvider } from "antd";
 function Hero() {
