@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import userContext from "../../context/userContext";
 import service from "../../appwrite/config";
 import Home from "./Home";
+import About from "../About/About"
 import Footer from "../Footer/Footer";
 import { Modal, ConfigProvider } from "antd";
 function Hero() {
@@ -151,7 +152,7 @@ function Hero() {
     <>
       <Home />
       <div
-        className=" bg-neutral-950 text-white font-poppins pb-28 pt-14 max-md:pb-14 "
+        className=" bg-neutral-950 text-white font-poppins pb-96 pt-96 max-md:pb-14 "
         id="timer"
       >
         <h1 className="underline underline-offset-8  decoration-teal-200 text-center text-4xl pt-6 text-neutral-100 ">
@@ -235,7 +236,7 @@ function Hero() {
               <input
                 type="text"
                 placeholder="Enter minutes"
-                className=" w-36 pl-2 py-2 outline-none bg-transparent text-white border rounded-3xl ml-1"
+                className=" w-36 pl-4 py-2 outline-none bg-transparent text-white border rounded-3xl ml-1"
                 value={custom}
                 onChange={(e) => {
                   setTime(Number(e.target.value) - 1);
