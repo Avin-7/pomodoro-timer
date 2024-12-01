@@ -3,6 +3,7 @@ import Chart, { defaults } from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 import service from "../../appwrite/config";
 import userContext from "../../context/userContext";
+import { Link } from "react-router-dom";
 function Dashboard() {
   const { userData, loginStatus } = useContext(userContext);
   const [data, setData] = useState();
@@ -110,13 +111,25 @@ function Dashboard() {
       </div>
     </>
   ) : (
-    <div className=" flex justify-center align-middle">
-      <div>
-        <h1 className=" text-2xl text-white text-center pt-48 break-words">
-          Please Signup or Login to view Dashboard...
-        </h1>
-      </div>
-    </div>
+    <div className=" flex flex-col justify-center items-center mt-60 text-white text-xl">
+    <h1 className=" text-balance mx-20 ">
+      Please
+      <Link
+        to="/login"
+        className=" text-blue-500 underline underline-offset-2 rounded-md  mx-2 hover:text-blue-400"
+      >
+        Login
+      </Link>
+      or{" "}
+      <Link
+        to="/signup"
+        className=" text-blue-500 underline underline-offset-2 rounded-md mx-2 hover:text-blue-400"
+      >
+        Create a new account
+      </Link>{" "}
+      to view Dashboard
+    </h1>
+  </div>
   );
 }
 
