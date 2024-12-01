@@ -23,7 +23,7 @@ function Navbar() {
   const showNavLinks = () => {
     if (timerRunning) {
       return (
-        <div className="  ">
+        <div>
           <div>
             <div className="bg-neutral-900 flex flex-col gap-14 absolute top-12 right-8 pt-8 mt-8 w-1/2 rounded-md">
               <Link
@@ -166,13 +166,13 @@ function Navbar() {
 
   return (
     <>
-      <div className="  max-md:hidden bg-transparent backdrop-blur-lg text-white flex gap-44 pb-10 pt-6 font-poppins fixed top-0 w-full ">
+      <div className="  max-lg:hidden bg-transparent backdrop-blur-lg text-white flex gap-44 pb-10 pt-6 font-poppins fixed top-0 w-full z-50">
         {timerRunning ? (
           <>
             <div className="flex absolute left-24 nav-bar">
               <Link
                 // to="/"
-                className=" text-emerald-50 text-xl underline decoration-teal-200 underline-offset-4 tracking-wider"
+                className=" text-emerald-50 text-xl underline decoration-teal-200 underline-offset-4 tracking-wider outline-none"
               >
                 Foczy
               </Link>
@@ -239,7 +239,7 @@ function Navbar() {
             <div className="  flex absolute left-24 nav-bar">
               <Link
                 to="/"
-                className=" text-emerald-50 text-xl underline decoration-teal-200 underline-offset-4 "
+                className=" text-emerald-50 text-xl underline decoration-teal-200 outline-none underline-offset-4 "
               >
                 Foczy
               </Link>
@@ -294,13 +294,13 @@ function Navbar() {
         )}
       </div>
 
-      <div className="  hidden max-sm:flex ">
-        <div className=" bg-transparent backdrop-blur-lg text-white flex gap-44 pb-10 pt-6 font-poppins fixed top-0 w-full ">
+      <div className="  hidden max-lg:flex ">
+        <div className=" bg-transparent backdrop-blur-lg text-white flex gap-44 pb-10 pt-6 font-poppins fixed top-0 w-full z-50">
           {timerRunning ? (
             <>
               <div className="flex ml-10">
                 <Link
-                  className=" text-emerald-50 text-xl underline decoration-teal-200 underline-offset-4 ml-2"
+                  className=" text-emerald-50 text-xl underline decoration-teal-200 underline-offset-4 ml-2 outline-none"
                   onClick={() => {
                     handleExit();
                   }}
@@ -328,7 +328,7 @@ function Navbar() {
               <div className="flex ml-10">
                 <Link
                   to="/"
-                  className=" text-emerald-50 text-xl underline decoration-teal-200 underline-offset-4 ml-2"
+                  className=" text-emerald-50 text-xl underline decoration-teal-200 underline-offset-4 ml-2 outline-none"
                 >
                   Foczy
                 </Link>
