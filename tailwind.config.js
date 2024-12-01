@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        raleway: ["Raleway", "sans-serif"],
       },
       width: {
         '100':'30rem',
