@@ -3,6 +3,7 @@ import userContext from "../../context/userContext";
 import service from "../../appwrite/config";
 import Home from "./Home";
 import Footer from "../Footer/Footer";
+import About from "../About/About";
 import { Modal, ConfigProvider } from "antd";
 function Hero() {
   const [sec, setSec] = useState(60);
@@ -19,21 +20,11 @@ function Hero() {
   const showModal = () => {
     setIsModalOpen(true);
   };
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  const {
-    loginStatus,
-    date,
-    userData,
-    setTimerRunning,
-    timerRunning,
-    usageTime,
-    setUsageTime,
-  } = useContext(userContext);
+  const { date, userData, setTimerRunning, timerRunning, usageTime } =
+    useContext(userContext);
   const email = userData != null ? userData.email : null;
 
   let seconds = 60;
@@ -89,15 +80,13 @@ function Hero() {
     if (timerCompleted) {
       clearInterval(intervalId);
       return (
-        <div className="outline rounded-lg flex justify-center align-middle z-10">
-          <div className=" bg-zinc-950 ">
-            <h1 className=" bg-zinc-900 text-white px-20 py-4">
-              Hurray, you have completed 🎉
-            </h1>
-            <h1 className=" text-white py-6 px-5 mb-2">Take a break.</h1>
+        <div className="outline outline-zinc-800 rounded-lg flex justify-center align-middle z-10 w-[400px] max-md:w-72 max-sm:w-40">
+          <div className=" bg-zinc-950 text-white py-4 text-center">
+            <div className=" my-5">Hurray!! You have completed a session</div>
+            <div className="my-5">take a 5 minute break</div>
             <button
               onClick={(e) => hideMessage()}
-              className="bg-zinc-700 rounded-full px-5 py-2 m-2 text-white "
+              className="bg-teal-300 rounded-full px-5 py-2 m-2 text-black "
             >
               Okay
             </button>
@@ -109,19 +98,19 @@ function Hero() {
         handleStop();
       }
       return (
-        <h1 className="text-9xl max-md:text-8xl">
+        <h1 className="text-9xl max-md:text-7xl">
           {min < 10 ? "0" + min : min} : {sec < 10 ? "0" + sec : sec}
         </h1>
       );
     } else {
       if (time != 0 && timerStart == false) {
         return (
-          <h1 className="text-9xl max-md:text-8xl">
+          <h1 className="text-9xl max-md:text-7xl">
             {`${time + 1}` < 10 ? `0${time + 1}` : `${time + 1}`} : 00
           </h1>
         );
       }
-      return <h1 className="  text-9xl max-md:text-8xl">00:00</h1>;
+      return <h1 className="  text-9xl max-md:text-7xl">00 : 00</h1>;
     }
   };
 
@@ -151,13 +140,13 @@ function Hero() {
     <>
       <Home />
       <div
-        className=" bg-black text-white font-poppins pb-96 pt-96"
+        className=" bg-neutral-950 text-white font-poppins pb-40 "
         id="timer"
       >
-        <h1 className="underline underline-offset-8  decoration-teal-200 text-center text-4xl pt-6 text-neutral-100 ">
+        <h1 className="underline underline-offset-8 font-raleway decoration-emerald-700 text-center text-4xl pt-6 my-24 text-neutral-100  tracking-wider">
           Let&apos;s Focus
         </h1>
-        <div className=" flex-wrap flex justify-center align-middle gap-4 px-4 pt-20 pb-12">
+        <div className=" flex-wrap flex justify-center align-middle gap-4 px-4 pt-20 pb-12 max-md:text-sm ">
           <button
             onClick={(e) => {
               setTime(Number(e.target.value) - 1);
@@ -227,7 +216,7 @@ function Hero() {
           <div>
             <button
               onClick={(e) => setCustomTimerInput(!cutomTimerInput)}
-              className="bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
+              className="outline outline-green-900 rounded-full px-4 py-2 hover:bg-zinc-900   "
             >
               Custom
             </button>
@@ -235,7 +224,7 @@ function Hero() {
               <input
                 type="text"
                 placeholder="Enter minutes"
-                className=" w-36 pl-4 py-2 outline-none bg-transparent text-white border rounded-3xl ml-1"
+                className=" w-36 pl-4 py-2 outline-none bg-transparent text-white border rounded-3xl ml-2"
                 value={custom}
                 onChange={(e) => {
                   setTime(Number(e.target.value) - 1);
@@ -246,6 +235,14 @@ function Hero() {
               ""
             )}
           </div>
+          <button
+            onClick={(e) => {
+              handleStop();
+            }}
+            className=" bg-white text-black rounded-full px-4 py-2 hover:bg-gray-200 "
+          >
+            Clear
+          </button>
         </div>
         <div className=" flex justify-center align-middle pt-20 pb-12 max-md:pt-14 max-md:pb-6">
           {timer()}
@@ -287,20 +284,21 @@ function Hero() {
               onClick={(e) => {
                 showModal();
               }}
-              className="text-black bg-white font-bold uppercase text-lg border rounded-full px-10 py-3 hover:bg-transparent hover:text-white ease-in-out  "
+              className="text-black bg-white font-bold uppercase text-lg max-md:text-sm  border rounded-full px-10 py-3 hover:bg-transparent hover:text-white ease-in-out  "
             >
               Stop
             </button>
           ) : (
             <button
               onClick={(e) => handleStart(e)}
-              className="text-black bg-white tracking-wider font-bold text-lg border rounded-full px-10 py-3 hover:bg-transparent hover:text-white ease-in-out  "
+              className="text-black bg-white tracking-wider transition-all font-medium text-lg max-md:text-sm  border rounded-full px-10 py-3 hover:bg-transparent hover:text-white ease-in-out  "
             >
               Let&apos;s begin
             </button>
           )}
         </div>
       </div>
+      <About />
       <Footer />
     </>
   );
