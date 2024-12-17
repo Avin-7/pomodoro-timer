@@ -50,9 +50,11 @@ function Dashboard() {
       console.log(error);
     }
   };
+
   useEffect(() => {
     getData();
   }, [loginStatus]);
+
   const getLabels = () => {
     var arr = [];
     if (data != undefined) {
@@ -68,10 +70,11 @@ function Dashboard() {
     }
   };
 
-  return loginStatus ? (
+  return !loginStatus ? (
     <>
+      {console.log("connected")}
       <div className=" flex gap-10 py-20 pl-10 font-poppins max-md:block max-sm:pl-0 ">
-        <div className="py-20 w-1/3 outline-double outline-violet-200 bg-neutral-950 rounded-lg h-full max-lg:w-1/4 max-lg:py-4 max-md:w-11/12 max-md:pr-2 max-md:h-1/2 max-md:mt-4 max-sm:mx-4 ">
+        {/* <div className="py-20 w-1/3 outline-double outline-violet-200 bg-neutral-950 rounded-lg h-full max-lg:w-1/4 max-lg:py-4 max-md:w-11/12 max-md:pr-2 max-md:h-1/2 max-md:mt-4 max-sm:mx-4 ">
           <div className="my-8 rounded-full flex justify-center align-middle ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +90,7 @@ function Dashboard() {
           <h2 className=" ml-8 mb-8 text-white max-lg:text-sm">
             Email : {userData.email}
           </h2>
-        </div>
+        </div> */}
         <div className=" bg-neutral-950 outline-double outline-violet-200 text-white rounded-lg w-3/5 max-md:w-11/12 max-md:h-96 max-sm:h-96 max-sm:w-11/12 max-sm:mx-4 ">
           <h1 className="  text-xl p-1 mt-2 ml-2 pb-14 ">Usage</h1>
           <div className=" w-full h-full">
@@ -112,24 +115,24 @@ function Dashboard() {
     </>
   ) : (
     <div className=" flex flex-col justify-center items-center mt-60 text-white text-xl">
-    <h1 className=" text-balance mx-20 ">
-      Please
-      <Link
-        to="/login"
-        className=" text-blue-500 underline underline-offset-2 rounded-md  mx-2 hover:text-blue-400"
-      >
-        Login
-      </Link>
-      or{" "}
-      <Link
-        to="/signup"
-        className=" text-blue-500 underline underline-offset-2 rounded-md mx-2 hover:text-blue-400"
-      >
-        Create a new account
-      </Link>{" "}
-      to view Dashboard
-    </h1>
-  </div>
+      <h1 className=" text-balance mx-20 ">
+        Please
+        <Link
+          to="/login"
+          className=" text-blue-500 underline underline-offset-2 rounded-md  mx-2 hover:text-blue-400"
+        >
+          Login
+        </Link>
+        or{" "}
+        <Link
+          to="/signup"
+          className=" text-blue-500 underline underline-offset-2 rounded-md mx-2 hover:text-blue-400"
+        >
+          Create a new account
+        </Link>{" "}
+        to view Dashboard
+      </h1>
+    </div>
   );
 }
 
