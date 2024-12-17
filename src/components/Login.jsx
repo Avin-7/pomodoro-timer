@@ -27,9 +27,9 @@ function Login() {
   //Login Function
   const login = async () => {
     try {
-      console.log(typeof(email));
-      console.log(typeof(password));
-      
+      console.log(typeof email);
+      console.log(typeof password);
+
       const session = await authService.login({ email, password });
       if (session) {
         const userData = await authService.getCurrentUser();
@@ -71,7 +71,7 @@ function Login() {
         <div className=" pt-30 flex justify-center align-middle ">
           <form
             action=" "
-            className="p-2 pb-14 pt-2 flex-col flex w-1/4 max-lg:w-1/3 max-md:w-11/12 max-sm:w-3/4 max-[320px]:w-4/5"
+            className="p-2 pb-14 pt-2 flex-col flex w-1/4 max-lg:w-1/3 max-md:w-11/12 max-sm:w-3/4 max-[320px]:w-4/5 "
             onSubmit={(e) => {
               e.preventDefault();
               login();
@@ -120,14 +120,22 @@ function Login() {
                 ""
               )}
             </div>
+
+            <Link
+              to="/forgot-password"
+              className=" text-teal-100 mt-5 mb-1 hover:text-teal-200 transition-all ease-in-out"
+            >
+              Forgot password
+            </Link>
+
             <Link
               to="/signup"
-              className=" text-teal-100 mt-2 mb-3 hover:text-gray-300 "
+              className=" text-white mt-1 mb-3 hover:text-gray-300 transition-all ease-in-out"
             >
               Don&apos;t have an account? Create new one.
             </Link>
             <input
-              className=" hover:bg-transparent hover:text-white border px-3 py-2 bg-white text-black mt-2 rounded-lg"
+              className=" hover:bg-gray-200 border px-3 py-2 bg-white text-black mt-2 rounded-lg transition-all ease-in-out"
               type="submit"
               value="Submit"
             />
