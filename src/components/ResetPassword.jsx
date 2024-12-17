@@ -67,7 +67,7 @@ function ResetPassword() {
               />
 
               <input
-                className="pass border rounded-md py-2 px-3 bg-transparent text-white "
+                className="pass border rounded-md py-2 px-3 my-4 bg-transparent text-white "
                 type="password"
                 id="repeatPass"
                 value={password.repeatPassword}
@@ -77,9 +77,9 @@ function ResetPassword() {
                     repeatPassword: e.target.value,
                   })
                 }
-                placeholder="repeat password"
+                placeholder="Re-enter new password"
               />
-              <div className="text-white mt-2 flex">
+              <div className="text-white my-2 flex">
                 <input
                   type="checkbox"
                   id="showPassword"
