@@ -65,7 +65,7 @@ function Login() {
       <div className="bg-neutral-950 font-poppins">
         <div>
           <h1 className=" text-white flex justify-center align-middle pt-36 pb-4 text-3xl">
-            Login
+            Sign In
           </h1>
         </div>
         <div className=" pt-30 flex justify-center align-middle ">
