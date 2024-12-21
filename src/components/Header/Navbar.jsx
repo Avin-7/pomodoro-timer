@@ -72,7 +72,7 @@ function Navbar() {
                     }}
                     className=" text-white rounded-md text-lg hover:text-teal-100 pl-6"
                   >
-                    Login
+                    Sign In
                   </Link>
                 </div>
               ) : (
@@ -84,7 +84,7 @@ function Navbar() {
                     }}
                     className=" bg-white text-black px-4 py-1 rounded-md text-lg hover:bg-teal-100 text-start pl-6"
                   >
-                    Log out
+                    Sign out
                   </button>
                 </div>
               )}
@@ -133,7 +133,7 @@ function Navbar() {
                     onClick={() => setShowLinks(false)}
                     className=" text-white rounded-md text-lg hover:text-teal-100 pl-6"
                   >
-                    Login
+                    Sign In
                   </Link>
                 </div>
               ) : (
@@ -145,7 +145,7 @@ function Navbar() {
                     }}
                     className="  bg-white max-md:bg-transparent max-md:text-white max-md:hover:text-teal-100 text-black px-4 py-1 rounded-md text-lg hover:bg-teal-100 text-start pl-6"
                   >
-                    Log out
+                    Sign out
                   </button>
                 </div>
               )}
@@ -219,7 +219,7 @@ function Navbar() {
                       handleExit();
                     }}
                   >
-                    Login
+                    Sign In
                   </Link>
                 </div>
               ) : (
@@ -228,7 +228,7 @@ function Navbar() {
                     className=" bg-white text-black px-4 py-1 rounded-md text-lg hover:bg-teal-100"
                     onClick={logoutHandler}
                   >
-                    Log out
+                    Sign out
                   </button>
                 </div>
               )}
@@ -276,7 +276,7 @@ function Navbar() {
                     to="/login"
                     className=" text-white rounded-md text-lg hover:text-teal-100"
                   >
-                    Login
+                    Sign In
                   </Link>
                 </div>
               ) : (
@@ -285,7 +285,7 @@ function Navbar() {
                     className=" bg-white text-black px-4 py-1 rounded-md text-lg hover:bg-teal-100"
                     onClick={logoutHandler}
                   >
-                    Log out
+                    Sign out
                   </button>
                 </div>
               )}
