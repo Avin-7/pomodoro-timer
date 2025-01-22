@@ -6,11 +6,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Hero from "./components/Hero/Hero.jsx";
 import Signup from "./components/Signup.jsx";
 import Login from "./components/Login.jsx";
-import Home from "./components/Hero/Home.jsx";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import Todo from "./components/Todo/Todo.jsx";
 import NotFound from "./components/NotFound.jsx";
-import DashboardTwo from "./components/Dashboard/DashboardTwo.jsx";
 import ForgotPassword from "./components/ForgotPassword.jsx";
 import ResetPassword from "./components/ResetPassword.jsx";
 const router = createBrowserRouter([
@@ -33,10 +31,6 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
-      },
-      {
-        path: "/dashboardTwo",
-        element: <DashboardTwo />,
       },
       {
         path: "/todos",

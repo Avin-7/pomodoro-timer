@@ -1,9 +1,8 @@
+const flowbite = require("flowbite-react/tailwind");
+
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", flowbite.content()],
   theme: {
     extend: {
       fontFamily: {
@@ -11,14 +10,16 @@ export default {
         raleway: ["Raleway", "sans-serif"],
       },
       width: {
-        '100':'30rem',
-        '120': '44rem',
-        '128': '62rem',
-      }
+        100: "30rem",
+        120: "44rem",
+        128: "62rem",
+      },
     },
-    
   },
-  plugins: [],
-  
-}
-
+  plugins: [
+    // require("flowbite/plugin")({
+    //   charts: true,
+    // }),
+    flowbite.plugin(),
+  ],
+};
