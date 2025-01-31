@@ -37,8 +37,10 @@ function AddTodo() {
         email,
         bgColor,
       });
-      notify();
-      setTodoListModified(!todoListModified);
+      if (res) {
+        notify();
+        setTodoListModified(!todoListModified);
+      }
     } catch (error) {
       console.log(error + "::: error in addTodo");
     }
@@ -48,7 +50,10 @@ function AddTodo() {
     <>
       <ToastContainer />
       <div className="text-white flex justify-center align-middle ">
-        <form onSubmit={handleSubmit} className="flex gap-2 w-100 max-lg:w-3/6 max-md:w-11/12 relative">
+        <form
+          onSubmit={handleSubmit}
+          className="flex gap-2 w-100 max-lg:w-3/6 max-md:w-11/12 relative"
+        >
           <div className="w-11/12">
             {/* 2xl determines the screen size above laptop large, it is easy to style using min width rather than max width... */}
             <div className=" w-full min-w-[160px] 2xl:min-w-[350px] sm:min-w-[40px]">

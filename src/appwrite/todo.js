@@ -13,7 +13,7 @@ export class Service {
 
   async storeData({ content, completed, email, bgColor }) {
     try {
-      await this.database.createDocument(
+      return await this.database.createDocument(
         conf.appWriteDatabaseId,
         conf.appWritetTodosCollectionId,
         ID.unique(),
