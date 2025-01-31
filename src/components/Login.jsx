@@ -20,7 +20,7 @@ function Login() {
   //Toast function
   const notify = () => {
     toast.success("Login Successful !!", {
-      autoClose: 2000,
+      autoClose: 500,
     });
   };
 
@@ -42,7 +42,7 @@ function Login() {
       }
       setTimeout(() => {
         navigate("/");
-      }, 3000);
+      }, 800);
     } catch (error) {
       setShowWarning(!showWarning);
       console.log(error + ":::error in login.jsx");
