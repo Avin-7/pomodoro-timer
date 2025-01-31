@@ -93,7 +93,7 @@ function Dashboard() {
             >
               Create a new account
             </Link>{" "}
-            to view Todo list
+            to view Dashboard
           </h1>
         </div>
       )}
