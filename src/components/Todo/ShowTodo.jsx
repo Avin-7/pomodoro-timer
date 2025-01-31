@@ -70,8 +70,8 @@ function ShowTodo({ todo }) {
       <div className=" mt-8">
         <div
           className={`rounded-lg p-4 relative text-white w-full  
-         ${completed ? " bg-[#0c1821]" : todo.bgColor}
-           ${completed ? " opacity-[0.75]" : todo.bgColor} `}
+             ${completed ? " bg-[#0c1821]" : todo.bgColor}
+               ${completed ? " opacity-[0.75]" : todo.bgColor} `}
         >
           <div className="p-2 pb-4 h-auto mb-4">
             <textarea
@@ -83,10 +83,16 @@ function ShowTodo({ todo }) {
               disabled={!editable}
             ></textarea>
           </div>
-          <div className="flex gap-44 max-xl:gap-14 max-lg:gap-40 max-sm:gap-44 max-[420px]:gap-32 max-[330px]:gap-20 max-[300px]:gap-5 absolute bottom-1">
-            <div>
+          <div className="">
+            <div
+              className={`grid grid-cols-4 max-[290px]:grid-cols-3 ${
+                completed ? "grid-cols-4" : null
+              }`}
+            >
               <button
-                className="px-1 py-1 rounded-lg  transition ease-linear"
+                className={`px-1 py-1 rounded-lg  transition ease-linear col-span-2 max-[290px]:col-span-1 ${
+                  completed ? "col-span-3" : null
+                }`}
                 onClick={handleCompleted}
               >
                 {completed ? (
@@ -95,14 +101,12 @@ function ShowTodo({ todo }) {
                   <img src={tickIcon} alt="" className=" h-6 w-8" />
                 )}
               </button>
-            </div>
-            <div>
               {!completed ? (
                 editable ? (
                   <button
                     onClick={handleSave}
                     title="save"
-                    className="px-3 py-2 rounded-lg transition ease-linear save"
+                    className="px-1 py-1 rounded-lg transition ease-linear save"
                   >
                     <img src={saveIcon} alt="" className="h-6 w-8 " />
                   </button>
@@ -110,7 +114,7 @@ function ShowTodo({ todo }) {
                   <button
                     onClick={handleEdit}
                     title="edit"
-                    className=" bg-transparent text-white px-3 py-2 rounded-lg  edit"
+                    className=" bg-transparent text-white px-1 py-1 rounded-lg  edit"
                   >
                     <img src={editIcon} alt="" className="h-6 w-8" />
                   </button>
@@ -119,9 +123,7 @@ function ShowTodo({ todo }) {
               <button
                 onClick={handleDelete}
                 title="delete"
-                className={` px-3 py-2 rounded-lg transition ease-linear delete ${
-                  completed ? "ml-14" : "ml-0"
-                }`}
+                className={` px-1 py-1 rounded-lg transition ease-linear delete `}
               >
                 <img src={trashIcon} alt="" className="h-6 w-8" />
               </button>
