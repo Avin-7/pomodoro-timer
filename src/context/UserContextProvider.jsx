@@ -15,7 +15,7 @@ const getDate = () => {
 const UserContextProvider = ({ children }) => {
   const [userData, setUserData] = useState("");
   const [loginStatus, setLoginStatus] = useState(false);
-  const [email, setEmail] = useState("");
+  const [userEmail, setUserEmail] = useState("");
   const [date, setDate] = useState(getDate());
   const [usageTime, setUsageTime] = useState(0);
   const [timerRunning, setTimerRunning] = useState(false);
@@ -24,8 +24,8 @@ const UserContextProvider = ({ children }) => {
     setUserData,
     loginStatus,
     setLoginStatus,
-    email,
-    setEmail,
+    userEmail,
+    setUserEmail,
     date,
     setDate,
     usageTime,
@@ -41,10 +41,10 @@ const UserContextProvider = ({ children }) => {
         if (data.status) {
           setLoginStatus(true);
           setUserData(data);
-          setEmail(data.email);
-          const res = await service.getDataOfDate({ date, email });
+          setUserEmail(data.email);
+          const res = await service.getDataOfDate({ date, userEmail });
           if (!res) {
-            await service.storeData({ date, usageTime, email });
+            await service.storeData({ date, usageTime, userEmail });
           }
         }
       }

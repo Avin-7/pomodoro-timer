@@ -11,12 +11,12 @@ export class Service{
         this.database = new Databases(this.client)
     }
 
-    async storeData({date,usageTime,email}) {
+    async storeData({date,usageTime,userEmail}) {
         try {
             await this.database.createDocument(conf.appWriteDatabaseId, conf.appWriteCollectionId,ID.unique(), {
                 Date: date,
                 TotalTime: usageTime,
-                Email: email,
+                Email: userEmail,
             });
             
         } catch (error) {
@@ -34,11 +34,11 @@ export class Service{
             console.log(error);
         }
     }
-    async getDataOfDate({date,email}) {
+    async getDataOfDate({date,userEmail}) {
         try {
             const res = await this.database.listDocuments(conf.appWriteDatabaseId, conf.appWriteCollectionId,[
                 Query.equal('Date', date),
-                Query.equal('Email', email),
+                Query.equal('Email', userEmail),
             ]);
             return res.total == 0? null:res;
         } catch (error) {

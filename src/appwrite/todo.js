@@ -29,12 +29,12 @@ export class Service {
     }
   }
 
-  async getData({ email }) {
+  async getData({ userEmail }) {
     try {
       const res = await this.database.listDocuments(
         conf.appWriteDatabaseId,
         conf.appWritetTodosCollectionId,
-        [Query.equal("email", email)]
+        [Query.equal("email", userEmail)]
       );
       return res;
     } catch (error) {

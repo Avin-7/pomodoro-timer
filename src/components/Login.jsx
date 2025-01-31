@@ -27,9 +27,6 @@ function Login() {
   //Login Function
   const login = async () => {
     try {
-      console.log(typeof email);
-      console.log(typeof password);
-
       const session = await authService.login({ email, password });
       if (session) {
         const userData = await authService.getCurrentUser();

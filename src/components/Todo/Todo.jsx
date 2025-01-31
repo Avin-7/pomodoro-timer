@@ -6,14 +6,14 @@ import ShowTodo from "./ShowTodo";
 import userContext from "../../context/userContext";
 import { Link } from "react-router-dom";
 function Todo() {
-  const { loginStatus, email } = useContext(userContext);
+  const { loginStatus, userEmail } = useContext(userContext);
   const { todoListModified, setTodoListModified, todos, setTodos } =
     useContext(todoContext);
 
   const getTodos = async () => {
     try {
-      if (email) {
-        const data = await todoService.getData({ email });
+      if (userEmail) {
+        const data = await todoService.getData({ userEmail });
         if (data) {
           setTodos(data.documents);
         }
@@ -25,7 +25,7 @@ function Todo() {
 
   useEffect(() => {
     getTodos();
-  }, [todoListModified, setTodoListModified, email]);
+  }, [todoListModified, setTodoListModified, userEmail]);
 
   return loginStatus ? (
     <>
