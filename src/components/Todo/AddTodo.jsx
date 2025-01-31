@@ -49,9 +49,9 @@ function AddTodo() {
       <ToastContainer />
       <div className="text-white flex justify-center align-middle ">
         <form onSubmit={handleSubmit} className="flex gap-2 w-100 max-lg:w-3/6 max-md:w-11/12 relative">
-          <div className="w-full">
+          <div className="w-11/12">
             {/* 2xl determines the screen size above laptop large, it is easy to style using min width rather than max width... */}
-            <div className=" w-full min-w-[200px] 2xl:min-w-[350px]  ">
+            <div className=" w-full min-w-[160px] 2xl:min-w-[350px] sm:min-w-[40px]">
               {todoContent.length < 40 ? (
                 <input
                   type="text"
