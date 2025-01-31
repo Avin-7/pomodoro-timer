@@ -12,7 +12,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [showWarning, setShowWarning] = useState(false);
 
-  const { setUserData, setLoginStatus, date, usageTime } =
+  const { setUserData, setLoginStatus, date, usageTime, setUserEmail } =
     useContext(userContext);
 
   const navigate = useNavigate();
@@ -33,6 +33,7 @@ function Login() {
         if (userData) {
           setUserData(userData);
           setLoginStatus(true);
+          setUserEmail(email)
           notify();
         }
       }
