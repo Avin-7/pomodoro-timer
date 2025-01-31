@@ -38,7 +38,8 @@ function ShowTodo({ todo }) {
   //Delete a Todo
   const deleteTodo = async () => {
     try {
-      await todoService.deleteDocument(todo.$id);
+      const res = await todoService.deleteDocument(todo.$id);
+      if (res) setTodoListModified(!todoListModified);
     } catch (error) {
       console.log(error + "ERROR :::SHOW_TODO :: DELETE_TODO");
     }
@@ -53,7 +54,6 @@ function ShowTodo({ todo }) {
 
   const handleDelete = () => {
     deleteTodo();
-    setTodoListModified(!todoListModified);
   };
 
   const handleEdit = () => {

@@ -94,7 +94,7 @@ export class Service {
   }
   async deleteDocument(id) {
     try {
-      await this.database.deleteDocument(
+      return await this.database.deleteDocument(
         conf.appWriteDatabaseId,
         conf.appWritetTodosCollectionId,
         id
