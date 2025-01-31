@@ -147,17 +147,7 @@ function Hero() {
           Let&apos;s Focus
         </h1>
         <div className=" flex-wrap flex justify-center align-middle gap-4 px-4 pt-20 pb-12 max-md:text-sm ">
-          <button
-            onClick={(e) => {
-              setTime(Number(e.target.value) - 1);
-              setMin(Number(e.target.value) - 1);
-            }}
-            id="2"
-            value="2"
-            className=" bg-zinc-800 rounded-full px-4 py-2 hover:bg-zinc-900  "
-          >
-            2 min
-          </button>
+         
           <button
             onClick={(e) => {
               setTime(Number(e.target.value) - 1);
