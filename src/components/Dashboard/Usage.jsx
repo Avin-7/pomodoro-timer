@@ -70,7 +70,7 @@ function Usage() {
     <>
       <div className="p-8 max-md:p-0 ">
         <div className="">
-          <div className="">
+          <div className="relative h-[60vh] w-[70vw] max-sm:-rotate-90 max-sm:h-[60vh] max-sm:w-[80vw] max-[320px]:w-[95vw] max-sm:ml-20">
             <Bar
               data={{
                 labels: getLabels(),
@@ -80,7 +80,8 @@ function Usage() {
                     data: getTimeUsage(),
                     backgroundColor: ["rgb(100,210,142)"],
                     borderRadius: 10,
-                    barThickness: 50,
+                    barThickness: 40,
+                    minBarLength: 4,
                   },
                 ],
               }}
