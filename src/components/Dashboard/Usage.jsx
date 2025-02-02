@@ -69,8 +69,8 @@ function Usage() {
   return loginStatus ? (
     <>
       <div className="p-8 max-md:p-0 ">
-        <div className="">
-          <div className="relative h-[60vh] w-[70vw] max-sm:-rotate-90 max-sm:h-[60vh] max-sm:w-[80vw] max-[320px]:w-[95vw] max-sm:ml-20">
+        <div className="p-8 overflow-hidden">
+          <div className="relative h-[60vh] w-[70vw] max-sm:-rotate-90 max-sm:h-[60vh] max-sm:w-[80vw] max-[320px]:w-[95vw] max-sm:mx-12 ">
             <Bar
               data={{
                 labels: getLabels(),
